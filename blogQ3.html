@@ -46,7 +46,7 @@
     <div class="max-w-2xl px-6 py-16 mx-auto space-y-12">
         <article class="space-y-8 dark:bg-gray-800 dark:text-gray-50">
             <div class="space-y-6">
-                <h1 class="text-4xl font-bold md:tracking-tight md:text-5xl">What is event bubble?</h1>
+                <h1 class="text-4xl font-bold md:tracking-tight md:text-5xl">What is the event loop in JavaScript and how does it work?</h1>
                 <div class="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-400">
                     <div class="flex items-center md:space-x-2">
                         <img src="https://source.unsplash.com/75x75/?portrait" alt="" class="w-4 h-4 border rounded-full dark:bg-gray-500 dark:border-gray-700">
@@ -56,11 +56,13 @@
                 </div>
             </div>
             <div class="dark:text-gray-100">
-                <p>A feature in the DOM called event bubbling allows an event to be triggered on one element to also be triggered on its parent elements in the DOM tree. The same event is triggered on each parent element until it reaches the topmost ancestor when an event is triggered on a child element (i.e., the document object). 
+                <p>The event loop is a mechanism in JavaScript that enables asynchronous programming. It works by constantly monitoring the call stack and the message queue.
 <br><br>
-                    For instance, if a button inside of a div triggers a click event, the event will first be triggered on the button element, followed by the div element, and then the document object. As a result, it is possible to attach event handlers to parent elements, which will be called even if the event was first triggered on a child element.
-                <br><br>
-                    The use of event bubbling can help to streamline event processing and minimize the amount of code required to handle events on many items. If handled improperly, it can potentially result in unexpected behavior, such as the activation of several event handlers on parent components.</p>
+                    When a function is called, it is added to the call stack. If the function is synchronous, it is executed immediately and removed from the stack. However, if the function is asynchronous (e.g., it makes an API call), it is moved to the Web APIs, which are a set of functions provided by the browser. Once the Web API finishes executing the asynchronous function, it puts a message in the message queue.
+               <br><br>     
+                    The event loop continuously checks the call stack and the message queue. If the call stack is empty, it takes the first message from the queue and pushes it onto the call stack, where it will be executed. This process continues as long as there are messages in the queue.
+                    <br><br>
+                    In summary, the event loop is a mechanism in JavaScript that allows asynchronous programming by constantly monitoring the call stack and message queue, and pushing messages from the queue onto the call stack when it is empty</p>
             </div>
         </article>
         <div>
@@ -73,7 +75,7 @@
                 <h4 class="text-lg font-semibold">Related posts</h4>
                 <ul class="ml-4 space-y-1 list-disc">
                     <li>
-                        <a rel="noopener noreferrer" href="./blogQ1.html" class="hover:underline">What is DOM and what is the purpose of DOM?</a>
+                        <a rel="noopener noreferrer" href="./blogQ1.html" class="hover:underline">What are the differences between the functions map, filter, forEach, and find in JavaScript?</a>
                     </li>
                     <li>
                         <a rel="noopener noreferrer" href="./blogQ2.html" class="hover:underline">How will you select HTML elements using DOM? Name the DOM methods.</a>
