@@ -44,7 +44,7 @@
     <div class="max-w-2xl px-6 py-16 mx-auto space-y-12">
         <article class="space-y-8 dark:bg-gray-800 dark:text-gray-50">
             <div class="space-y-6">
-                <h1 class="text-4xl font-bold md:tracking-tight md:text-5xl">What are the differences between the functions map, filter, forEach, and find in JavaScript?</h1>
+                <h1 class="text-4xl font-bold md:tracking-tight md:text-5xl">Adding Selected Quiz Answers to an Array in JavaScript</h1>
                 <div class="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-400">
                     <div class="flex items-center md:space-x-2">
                         <img src="https://source.unsplash.com/75x75/?portrait" alt="" class="w-4 h-4 border rounded-full dark:bg-gray-500 dark:border-gray-700">
@@ -54,13 +54,26 @@
                 </div>
             </div>
             <div class="dark:text-gray-100">
-                <p>A callback function is a function that is performed when a specified event takes place and is supplied as an input to another function. A callback function's function is to enable asynchronous programming, which allows code to run while waiting for an event to happen.
-<br><br>
-                    JavaScript frequently uses callback functions to handle events like mouse clicks, HTTP requests, and timers. The appropriate callback function is executed when an event happens, enabling programmers to specify unique behavior for that event.
-                <br><br>
-                    When dealing with lengthy tasks that could take some time to finish or when code needs to run in a specified order, callback functions can be especially helpful. Developers can guarantee that the code is executed in the correct order and that the operation's results are handled correctly by giving a callback function as a parameter.
-<br><br>
-                    In general, JavaScript's callback functions are a strong tool that help programmers create effective, adaptable, and event-driven programs.</p>
+                <p>
+<pre><code>
+    const chooseQuiz = (index, givenAns) => {
+        const isExist = answers.find((ans) => ans.id === quizData[index].id);
+        if (isExist) {
+          let serial = 0;
+          for (let quiz of answers) {
+            if (isExist.id === quiz.id) {
+              answers.splice(serial, 1, { ...quizData[index], givenAns });
+              break;
+            }
+            serial++;
+          }
+        } else {
+          answers.push({ ...quizData[index], givenAns });
+        }
+        displayAnswers(answers);
+      };
+</code></pre>                    
+                    The 'chooseQuiz' function in JavaScript adds selected quiz answers to an array. It takes two parameters, index and givenAns, which identify the quiz and its corresponding answer. The function checks if the quiz already exists in the answers array. If it does, the function updates the answer with the new value. Otherwise, it pushes a new object with the quiz and answer into the answers array. To call the function and display the answers, you need to pass the appropriate parameters to the function.</p>
             </div>
         </article>
         <div>
